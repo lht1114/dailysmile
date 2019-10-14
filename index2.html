@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>每日一笑</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <style>
+    .content{
+        width: 100%;
+        height: 300px;
+        margin-top: 50px;
+        font-size: 1.3rem;
+        text-align: left;
+        color: salmon;
+    }
+    input{
+        display: block;
+        margin: 200px auto;
+        border: none;
+        font-size: 1.4rem;
+        width: 40%;
+        height: 50px;
+        border-radius: 20px;
+        background-color: silver;
+        color: tomato;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="content">
+            {{msg[0]}}
+        </div>
+        <input type="button" @click="get()" value="切换下一个">
+    </div>
+</body>
+<script>
+window.onload = function(){
+    var vm = new Vue({
+        el:'#app',
+        data() {
+            return {
+                msg:''
+            }
+        },
+        mounted() {
+            this.get();
+        },
+        methods: {
+            get:function(){
+                this.$http.get('https://hd215.api.yesapi.cn/?s=App.Common_Joke.RandOne&app_key=34B1D06BAE79A4B68E2F26B68AD59273').then(function(res){
+                    console.log(res.body.data.joke);
+                    this.msg = res.body.data.joke[0];
+
+                },function(){
+                    console.log('请求失败');
+                })
+            }
+        },
+    })
+}
+
+</script>
+</html>

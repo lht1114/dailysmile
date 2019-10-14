@@ -9,11 +9,11 @@
     <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
     <style>
     .content{
-        width: 100%;
+        width: 70%;
         height: 300px;
-        margin-top: 50px;
+        margin: 50px auto 0;
         font-size: 1.3rem;
-        text-align: left;
+        text-align: center;
         color: salmon;
     }
     input{
@@ -27,13 +27,20 @@
         background-color: silver;
         color: tomato;
     }
-    
+    @media screen {
+        .content {
+            width:95%;
+        }
+    }
     </style>
 </head>
 <body>
     <div id="app">
+        <div style="text-align: center;">
+            <h3>每日一笑</h3>
+        </div>
         <div class="content">
-            {{msg[0]}}
+            <p>{{msg[0]}}</p>
         </div>
         <input type="button" @click="get()" value="切换下一个">
     </div>

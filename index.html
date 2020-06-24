@@ -41,7 +41,10 @@
             <h3>VUE.js</h3>
         </div>
         <div class="content">
-            <p>{{msg[0]}}</p>
+            笑话
+            <p>{{ msg[0] }}</p>
+            土味情话
+            <p>{{ loveList }}</p>
         </div>
         <input type="button" @click="get()" value="切换下一个">
     </div>
@@ -52,23 +55,29 @@ window.onload = function(){
         el:'#app',
         data() {
             return {
-                msg:''
+                msg:'',
+                loveList: ''
             }
         },
-        mounted() {
+        created() {
             this.get();
         },
         methods: {
-            get:function(){
+            get(){
                 this.$http.get('https://hd215.api.yesapi.cn/?s=App.Common_Joke.RandOne&app_key=B379F9DE4E3F35FF0BC0B776C91B6B18').then(function(res){
                     //console.log(res.body.data.joke);
-                    this.msg = res.body.data.joke[0];
-
+                    this.msg = res.body.data.joke[0]
                 },function(){
                     console.log('请求失败');
                 })
+                this.getLove();
+            },
+            getLove() {
+                this.$http.get('https://v1.alapi.cn/api/qinghua').then(data => {
+                    this.loveList = data.body.data.content
+                })
             }
-        },
+        }
     })
 }
 

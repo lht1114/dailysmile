@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>挺尴尬的~~</title>
+    <title>每日一笑</title>
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
     <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
     <style>
@@ -27,6 +27,11 @@
         background-color: silver;
         color: tomato;
     }
+    .title {
+        text-align: center;
+        font-weight: bold;
+        color: darkcyan;
+    }
     @media screen and (max-width: 780px){
         .content {
             width:95%;
@@ -41,9 +46,9 @@
             <h3>VUE.js</h3>
         </div>
         <div class="content">
-            笑话
+            <p class="title">笑话</p>
             <p>{{ msg[0] }}</p>
-            土味情话
+            <p class="title">土味情话</p>
             <p>{{ loveList }}</p>
         </div>
         <input type="button" @click="get()" value="切换下一个">

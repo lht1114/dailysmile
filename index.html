@@ -69,7 +69,7 @@ window.onload = function(){
         },
         methods: {
             get(){
-                this.$http.get('https://hd215.api.yesapi.cn/?s=App.Common_Joke.RandOne&app_key=2E61EA946BB173A060749F5FD1D7D3CA').then(function(res){
+                this.$http.get('https://hn216.api.yesapi.cn/?s=App.Common_Joke.RandOne&app_key=2E61EA946BB173A060749F5FD1D7D3CA').then(function(res){
                     //console.log(res.body.data.joke);
                     this.msg = res.body.data.joke[0]
                 },function(){
